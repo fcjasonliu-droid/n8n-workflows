@@ -1,0 +1,129 @@
+{
+  "name": "🩺 CRM同步健康检查 (ESD)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "triggerAtHour": 9,
+              "triggerAtMinute": 30
+            }
+          ]
+        }
+      },
+      "id": "trigger-schedule-hc",
+      "name": "Schedule (每日 09:30)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {},
+      "id": "trigger-manual-hc",
+      "name": "手动触发",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 180]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 用 child_process 跑 healthcheck.py (Code 节点内执行 python, 不用 executeCommand 节点)\nconst { execSync } = require('child_process');\nconst cmd = '/usr/bin/python3 /Users/jason/esd-n8n/bridge/healthcheck.py --product esd-rubber-mat';\ntry {\n  const stdout = execSync(cmd, { encoding: 'utf-8', timeout: 90000 });\n  const lastLine = stdout.trim().split('\\n').pop() || '{}';\n  let parsed = {};\n  try { parsed = JSON.parse(lastLine); } catch (e) { parsed = { ok: false, error: '解析失败: ' + stdout.slice(-200) }; }\n  return [{ json: parsed }];\n} catch (e) {\n  return [{ json: { ok: false, healthy: false, error: String(e.message || e).slice(0, 300) } }];\n}"
+      },
+      "id": "code-run-hc",
+      "name": "跑健康检查 (Python)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "cond-healthy",
+              "leftValue": "={{ $json.healthy }}",
+              "rightValue": "={{ true }}",
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-healthy",
+      "name": "健康?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 正常 - 只留摘要\nreturn [{ json: { status: 'ok', healthy: true, note: $json.note || '同步正常' } }];"
+      },
+      "id": "code-ok-hc",
+      "name": "正常 (无操作)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, -120]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 异常 - 构造报警文本\nconst alertText = $json.alert || ('CRM同步异常: 本地 ' + $json.local_sent + ' / 飞书 ' + $json.feishu_records + ' 漂移 ' + $json.drift);\nreturn [{ json: { alertText: alertText } }];"
+      },
+      "id": "code-alert-hc",
+      "name": "构造报警",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 120]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 调 Hermes 8766 feishu-dm 端点发 DM 报警\nconst { fetch } = require('n8n-workflow');\nconst alertText = $json.alertText || 'CRM同步异常(无详情)';\nconst resp = await fetch('http://127.0.0.1:8766/feishu-dm', {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' },\n  body: JSON.stringify({ text: alertText })\n});\nconst body = await resp.text();\nreturn [{ json: { delivered: resp.ok, body: body.slice(0, 200), alertText: alertText } }];"
+      },
+      "id": "code-dm-hc",
+      "name": "飞书 DM 报警",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 120]
+    }
+  ],
+  "connections": {
+    "Schedule (每日 09:30)": {
+      "main": [[{ "node": "跑健康检查 (Python)", "type": "Node", "index": 0 }]]
+    },
+    "手动触发": {
+      "main": [[{ "node": "跑健康检查 (Python)", "type": "Node", "index": 0 }]]
+    },
+    "跑健康检查 (Python)": {
+      "main": [[{ "node": "健康?", "type": "Node", "index": 0 }]]
+    },
+    "健康?": {
+      "main": [
+        [{ "node": "正常 (无操作)", "type": "Node", "index": 0 }],
+        [{ "node": "构造报警", "type": "Node", "index": 0 }]
+      ]
+    },
+    "构造报警": {
+      "main": [[{ "node": "飞书 DM 报警", "type": "Node", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "id": "crm-healthcheck-esd",
+  "versionId": "de0780fe-9b89-4b0e-b8f4-9e256bf3ec2b",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
