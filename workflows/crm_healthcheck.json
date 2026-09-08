@@ -17,7 +17,10 @@
       "name": "Schedule (每日 09:30)",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [0, 0]
+      "position": [
+        0,
+        0
+      ]
     },
     {
       "parameters": {},
@@ -25,7 +28,10 @@
       "name": "手动触发",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
-      "position": [0, 180]
+      "position": [
+        0,
+        180
+      ]
     },
     {
       "parameters": {
@@ -35,7 +41,10 @@
       "name": "跑健康检查 (Python)",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [240, 0]
+      "position": [
+        240,
+        0
+      ]
     },
     {
       "parameters": {
@@ -65,7 +74,10 @@
       "name": "健康?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
-      "position": [460, 0]
+      "position": [
+        460,
+        0
+      ]
     },
     {
       "parameters": {
@@ -75,7 +87,10 @@
       "name": "正常 (无操作)",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [700, -120]
+      "position": [
+        700,
+        -120
+      ]
     },
     {
       "parameters": {
@@ -85,7 +100,10 @@
       "name": "构造报警",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [700, 120]
+      "position": [
+        700,
+        120
+      ]
     },
     {
       "parameters": {
@@ -95,27 +113,101 @@
       "name": "飞书 DM 报警",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [940, 120]
+      "position": [
+        940,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "path": "crm-healthcheck",
+        "httpMethod": "GET",
+        "responseMode": "onReceived"
+      },
+      "id": "trigger-webhook-hc",
+      "name": "Webhook 触发",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        -180
+      ],
+      "webhookId": "crm-healthcheck-webhook"
     }
   ],
   "connections": {
     "Schedule (每日 09:30)": {
-      "main": [[{ "node": "跑健康检查 (Python)", "type": "Node", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "跑健康检查 (Python)",
+            "type": "Node",
+            "index": 0
+          }
+        ]
+      ]
     },
     "手动触发": {
-      "main": [[{ "node": "跑健康检查 (Python)", "type": "Node", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "跑健康检查 (Python)",
+            "type": "Node",
+            "index": 0
+          }
+        ]
+      ]
     },
     "跑健康检查 (Python)": {
-      "main": [[{ "node": "健康?", "type": "Node", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "健康?",
+            "type": "Node",
+            "index": 0
+          }
+        ]
+      ]
     },
     "健康?": {
       "main": [
-        [{ "node": "正常 (无操作)", "type": "Node", "index": 0 }],
-        [{ "node": "构造报警", "type": "Node", "index": 0 }]
+        [
+          {
+            "node": "正常 (无操作)",
+            "type": "Node",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "构造报警",
+            "type": "Node",
+            "index": 0
+          }
+        ]
       ]
     },
     "构造报警": {
-      "main": [[{ "node": "飞书 DM 报警", "type": "Node", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "飞书 DM 报警",
+            "type": "Node",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook 触发": {
+      "main": [
+        [
+          {
+            "node": "跑健康检查 (Python)",
+            "type": "Node",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
