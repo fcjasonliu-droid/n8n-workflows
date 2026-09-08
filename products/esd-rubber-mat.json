@@ -1,0 +1,152 @@
+{
+  "product_id": "esd-rubber-mat",
+  "schema_version": "1.0.0",
+  "display_name": "ESD Rubber Mat",
+  "owner_company": "Shanghai Fancytech International Trading Co., Ltd",
+  "main_brand": "EDAR / ESDROLL",
+
+  "basic": {
+    "category": "ESD防护材料",
+    "family_zh": "防静电橡胶板",
+    "family_en": "ESD Rubber Sheet / Mat",
+    "main_products": [
+      {"id": "esd-rubber-mat", "name_zh": "ESD 橡胶垫", "name_en": "ESD Rubber Mat", "is_primary": true},
+      {"id": "esd-pvc-roll", "name_zh": "ESD PVC 卷材", "name_en": "ESD PVC Roll", "is_primary": false},
+      {"id": "anti-fatigue-mat", "name_zh": "抗疲劳垫", "name_en": "Anti-fatigue Mat", "is_primary": false},
+      {"id": "esd-accessories", "name_zh": "ESD 接地配件", "name_en": "ESD Grounding Accessories", "is_primary": false}
+    ],
+    "spec_format": "宽 x 长 x 厚 (inch x feet x inch)",
+    "spec_example": "36'' x 50 feet x 0.080''",
+    "common_colors": ["Green/Black", "Blue/Black"],
+    "unit": "Roll",
+    "compliant_standards": ["IEC 61340", "ANSI ESD S20.20"],
+    "hs_codes": [
+      {"code": "4008.21", "code_full": "40082100", "name": "ESD 橡胶垫/板 (主用)", "note": "硫化橡胶板/片, 印度试点用"},
+      {"code": "4016.91", "code_full": "40169100", "name": "抗疲劳垫/硫化橡胶地板垫", "note": ""},
+      {"code": "3920.49", "code_full": "39204900", "name": "PVC 板/片 (含增塑剂)", "note": ""},
+      {"code": "3921.90", "code_full": "39219090", "name": "其他塑料板/片 (层压等)", "note": ""},
+      {"code": "3925.30", "code_full": "39253000", "name": "PVC 条帘/网格帘", "note": "网格帘业务"},
+      {"code": "3926.90", "code_full": "39269090", "name": "其他塑料制品", "note": "PVC 类兜底"}
+    ]
+  },
+
+  "supply_chain": {
+    "primary_factory": {
+      "name_zh": "亿达橡塑",
+      "name_en": "Yida Rubber",
+      "type": "工贸一体 (自有/协作厂)",
+      "address": "TODO",
+      "contact": "TODO",
+      "lead_time_days": 14,
+      "moq": "TODO",
+      "certifications": [
+        {"name": "RoHS2.0", "report_id": "A2250343775101001E", "date": "2025-05-23"}
+      ]
+    },
+    "backup_factories": ["TODO"],
+    "quality_notes": "RoHS2.0 认证报告在 Obsidian: 凡仕豪/认证报告/RoHS2.0/"
+  },
+
+  "pricing": {
+    "currency": "USD",
+    "price_basis": ["EXW", "FOB Shanghai", "CIF", "CNF"],
+    "price_range_usd": {
+      "esd_rubber_mat_per_roll": "TODO",
+      "esd_pvc_roll_per_roll": "TODO"
+    },
+    "export_rebate_rate": "TODO (默认 13%)",
+    "vat_rate": "13%",
+    "payment_terms": "TODO (30% T/T deposit, 70% before shipment)"
+  },
+
+  "target_customers": {
+    "industries": ["Electronics", "PCB", "Semiconductor", "Automotive", "Pharmaceutical", "Aerospace", "Medical"],
+    "high_value_countries": ["USA", "Germany", "United Kingdom", "UK", "France", "Japan"],
+    "med_value_countries": ["Vietnam", "Thailand", "India", "Mexico", "Brazil", "Turkey", "UAE", "Poland"],
+    "customer_persona": "欧美电子制造 / 汽车电子 / PCB 装配 / 半导体 / 医药工厂采购",
+    "country_tz_mapping_file": "/Users/jason/外贸/scripts/country_tz.json",
+    "tz_send_window_local": [9, 10],
+    "tz_send_window_local_europe": [8, 10]
+  },
+
+  "outreach": {
+    "sender": {
+      "display_name": "Shanghai Fancytech International Trading Co., Ltd",
+      "email": "send@mail.esdroll.com",
+      "reply_to": "coco@esdroll.com"
+    },
+    "smtp": {
+      "host": "smtpdm.aliyun.com",
+      "port": 465,
+      "auth_keychain_service": "esd-aliyun-send-smtp"
+    },
+    "imap": {
+      "host": "imap.qiye.aliyun.com",
+      "port": 993,
+      "auth_keychain_service": "esd-aliyun-imap",
+      "mailbox": "coco@esdroll.com"
+    },
+    "quotas": {
+      "max_per_day": 190,
+      "rate_limit_seconds": 15,
+      "retry_max": 3,
+      "retry_delays_minutes": [5, 30, 120]
+    },
+    "templates": [
+      {"id": "outreach_v1", "name": "ESD 新客户开发信", "trigger": "首次", "source": "/Users/jason/外贸/scripts/template.py"},
+      {"id": "followup_v1", "name": "ESD 跟进邮件", "trigger": "3-5天未回", "source": "/Users/jason/外贸/scripts/template.py"},
+      {"id": "FOLLOWUP_V2", "name": "ESD 二次跟进", "trigger": "7天+未回", "source": "/Users/jason/外贸/templates/FOLLOWUP_V2.md"}
+    ]
+  },
+
+  "crm": {
+    "platform": "feishu-bitable",
+    "base_token": "W6YCbR5rsaqJUxsGqjscKaAxn1f",
+    "base_url": "https://fcn90z1owqgn.feishu.cn/base/W6YCbR5rsaqJUxsGqjscKaAxn1f",
+    "tables": {
+      "customer": "tblRs8qtUEqZhjKs",
+      "outreach": "tblPGxlebpgrb1rQ",
+      "tag_product": "tblNeDtG8DkwUVuO",
+      "leads": "tbltY4N3Wwgka0ou"
+    },
+    "producer_view": {"name": "待跟进客户", "view_id": "vewIoDlT0l"},
+    "feishu_app_id": "cli_aad307da3438dd18",
+    "field_map_file": "/Users/jason/外贸/scripts/feishu_field_ids.json"
+  },
+
+  "workflows": {
+    "parent_template_name": "<product> Full Chain",
+    "sub_workflows": [
+      {"id": "sub-customer-dev",   "purpose": "拉待跟进客户 -> 生成任务", "replaces": "producer.py",       "stub": false},
+      {"id": "sub-scheduler",      "purpose": "按客户时区排程",           "replaces": "scheduler.py",      "stub": false},
+      {"id": "sub-email-sender",   "purpose": "SMTP 发送",               "replaces": "worker.py",         "stub": false},
+      {"id": "sub-crm-sync",       "purpose": "回写飞书 crm-esd",        "replaces": "crm_sync.py",       "stub": false},
+      {"id": "sub-inquiry-receive","purpose": "IMAP 询盘接收",           "replaces": "imap_poll.py",      "stub": true},
+      {"id": "sub-feishu-dm",      "purpose": "飞书 DM 通知",            "replaces": "feishu_dm.py",      "stub": true},
+      {"id": "sub-quotation",      "purpose": "报价单生成",              "replaces": null,                "stub": true},
+      {"id": "sub-contract",       "purpose": "合同/PI 生成",            "replaces": null,                "stub": true},
+      {"id": "sub-production",     "purpose": "生产跟单",                "replaces": null,                "stub": true},
+      {"id": "sub-inspection",     "purpose": "验货",                    "replaces": null,                "stub": true},
+      {"id": "sub-customs",        "purpose": "报关",                    "replaces": null,                "stub": true},
+      {"id": "sub-shipment",       "purpose": "出货",                    "replaces": null,                "stub": true},
+      {"id": "sub-collection",     "purpose": "收汇",                    "replaces": null,                "stub": true}
+    ]
+  },
+
+  "legacy_system": {
+    "path": "/Users/jason/外贸",
+    "system_status_file": "/Users/jason/外贸/SYSTEM_STATUS.md",
+    "cron_tick": "/Users/jason/外贸/scripts/cron_tick.sh",
+    "launchd_plists": ["com.jason.esd.cron", "com.jason.esd.dailyreport"],
+    "queue_dirs": {
+      "pending": "/Users/jason/外贸/queue/pending",
+      "ready": "/Users/jason/外贸/queue/ready",
+      "in_flight": "/Users/jason/外贸/queue/in_flight",
+      "sent": "/Users/jason/外贸/queue/sent",
+      "failed": "/Users/jason/外贸/queue/failed",
+      "bounced": "/Users/jason/外贸/queue/bounced",
+      "replied": "/Users/jason/外贸/queue/replied"
+    },
+    "migration_status": "in-progress (2026-09-08 start)"
+  }
+}
