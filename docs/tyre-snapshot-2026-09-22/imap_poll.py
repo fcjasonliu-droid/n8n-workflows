@@ -149,7 +149,7 @@ def fetch_imap(cfg: dict, since_hours: int = 24) -> list:
             date_dt = parsedate_to_datetime(date_str)
             if date_dt.tzinfo:
                 date_dt = date_dt.astimezone(dt.timezone.utc).replace(tzinfo=None)
-            if (dt.datetime.utcnow() - date_dt).total_seconds() > since_hours * 3600:
+            if (dt.datetime.now(dt.timezone.utc) - date_dt).total_seconds() > since_hours * 3600:
                 continue
         except Exception:
             pass
@@ -173,6 +173,7 @@ def main():
     cfg = load_config(args.product)
     crm_cfg = cfg["crm"]
     tbl_outreach = crm_cfg["tables"]["outreach"]
+    tbl_customer = crm_cfg["tables"]["customer"]   # 【9-22 修复】标保护客户需要
     lark_cli = crm_cfg["lark_cli"]
     base_token = crm_cfg["base_token"]
 
@@ -204,6 +205,15 @@ def main():
             continue
         email_to_records.setdefault(e, []).append(r["record_id"])
 
+    # 【9-22 修复】拉客户档案表, 建 email → customer_record_id 索引, 用于标保护客户
+    print("  → 拉客户档案 (匹配邮箱 + 标保护客户)...")
+    customers = list_records(lark_cli, base_token, tbl_customer)
+    email_to_customer = {}   # email → customer record_id
+    for c in customers:
+        em = (c.get("邮箱") or "").strip().lower()
+        if em:
+            email_to_customer[em] = c["record_id"]
+
     # 3. 匹配: 邮件 from_email 在我们发过的列表里 → 标"客户回复"
     updates = []
     matched_emails = set()
@@ -233,9 +243,30 @@ def main():
     if not updates:
         return
 
-    # 4. 写回 CRM
+    # 4. 写回 CRM (开发信记录表)
     update_records(lark_cli, base_token, tbl_outreach, updates)
-    print(f"  ✅ 更新 {len(updates)} 条")
+    print(f"  ✅ 更新 {len(updates)} 条开发信记录")
+
+    # 【9-22 修复】5. 标真人回复客户的「保护客户=true」+「回复类型=真人回复」+「最后回信时间=now」
+    # 目的: pick_candidates 跳过保护客户, 后续 R2/R3 不再重复发
+    cust_updates = []
+    for e in matched_emails:
+        cid = email_to_customer.get(e)
+        if cid:
+            cust_updates.append({
+                "record_id": cid,
+                "fields": {
+                    "保护客户": True,
+                    "回复类型": ["真人回复"],
+                    "最后回信时间": dt.datetime.now().isoformat(timespec='seconds'),
+                }
+            })
+    if cust_updates:
+        try:
+            update_records(lark_cli, base_token, tbl_customer, cust_updates)
+            print(f"  ✅ 标保护客户 {len(cust_updates)} 条 (回复后不再重复发送)")
+        except Exception as e:
+            print(f"  ⚠️ 标保护客户失败 (non-fatal): {e}")
 
     # 5. 审计日志
     audit = {
