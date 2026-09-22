@@ -1,0 +1,10 @@
+{
+  "global_block": false,
+  "allow": [
+    "tire"
+  ],
+  "deny": [],
+  "note": "2026-09-22 Jason 解锁: ty 全量 R1 每日发. 15 天 R2 / 30 天 R3. 真人回复自动标保护.",
+  "created_at": "2026-09-22T12:00:00+08:00",
+  "created_by": "Hermes (外贸总经理助理)"
+}

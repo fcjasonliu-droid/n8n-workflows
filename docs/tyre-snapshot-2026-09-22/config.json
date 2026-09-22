@@ -1,0 +1,319 @@
+{
+  "product_code": "tire",
+  "product_name": "Used Truck Tire",
+  "company_name": "EDAR Rubber Product Co., Ltd. / 凡仕豪",
+  "from_email": "send@mail.esdroll.com",
+  "from_name": "Jason Liu",
+  "reply_to": "fcjasonliu@gmail.com",
+  "smtp_host": "smtpdm.aliyun.com",
+  "smtp_port": 465,
+  "smtp_user_env": "PUSH_SMTP_USER",
+  "smtp_pass_env": "PUSH_SMTP_PASS",
+  "imap_host": "imap.gmail.com",
+  "imap_user_env": "GMAIL_USER",
+  "imap_pass_env": "GMAIL_APP_PASS",
+  "crm": {
+    "base_token": "W0GvbfX32aSkpxsWisrcPvfCn36",
+    "lark_cli": "/Users/jason/.npm-global/bin/lark-cli",
+    "tables": {
+      "customer": "tblpWzZsEU6hGL9G",
+      "outreach": "tblG2C0G9rtys0te",
+      "leads": "tbljNG56Npx90eGz",
+      "tags": "tbl6mmfn5LCPslMl"
+    },
+    "fields": {
+      "customer": {
+        "company": {
+          "id": "fldc4uUj26",
+          "name": "公司名称"
+        },
+        "email": {
+          "id": "fldopxRH3I",
+          "name": "邮箱"
+        },
+        "country": {
+          "id": "fldydD0UDz",
+          "name": "国家"
+        },
+        "customer_type": {
+          "id": "fld7IAzllC",
+          "name": "客户类型"
+        },
+        "source": {
+          "id": "fldFyBXIsp",
+          "name": "来源"
+        },
+        "protect": {
+          "id": "fldCPNj7Bd",
+          "name": "保护客户"
+        },
+        "note": {
+          "id": "fldMAeW7bJ",
+          "name": "备注"
+        },
+        "created_at": {
+          "id": "fldEKYbhlK",
+          "name": "首次建档"
+        }
+      },
+      "outreach": {
+        "round": {
+          "id": "fldkcAwqZf",
+          "name": "轮次"
+        },
+        "follow_status": {
+          "id": "fldfiYGoIa",
+          "name": "跟进状态"
+        },
+        "send_status": {
+          "id": "fldDbaZi1O",
+          "name": "发送状态"
+        },
+        "send_date": {
+          "id": "fldAM3nshz",
+          "name": "发送日期"
+        },
+        "customer_id": {
+          "id": "fldf5v2n4B",
+          "name": "客户档案ID"
+        },
+        "bounce_category": {
+          "id": "fldrFEsYiP",
+          "name": "退信原因"
+        },
+        "success_flag": {
+          "id": "fld4Bl9weF",
+          "name": "成功标记"
+        },
+        "reply_flag": {
+          "id": "fldLhN07kI",
+          "name": "回信标记"
+        },
+        "subject": {
+          "id": "fldDv3AGlJ",
+          "name": "邮件主题"
+        },
+        "body": {
+          "id": "fldvo8eHE0",
+          "name": "邮件正文"
+        },
+        "company": {
+          "id": "fld2OneXj3",
+          "name": "公司名称"
+        },
+        "email": {
+          "id": "fldNyz6hok",
+          "name": "客户邮箱"
+        },
+        "country": {
+          "id": "fldVu166XY",
+          "name": "国家"
+        }
+      },
+      "leads": {
+        "company": {
+          "id": "fldww0oeuP",
+          "name": "公司名称"
+        },
+        "email": {
+          "id": "fld0iVDfND",
+          "name": "邮箱"
+        },
+        "country": {
+          "id": "fldYzR4GBN",
+          "name": "国家"
+        },
+        "customer_type": {
+          "id": "fldph6KlWf",
+          "name": "客户类型"
+        },
+        "source": {
+          "id": "fldfe1OEdn",
+          "name": "来源"
+        },
+        "audit_status": {
+          "id": "fldGmsEf2M",
+          "name": "审核状态"
+        },
+        "to_customer_id": {
+          "id": "fldni1D85j",
+          "name": "转客户档案ID"
+        },
+        "first_seen": {
+          "id": "fld3Tp2o38",
+          "name": "首次入库日期"
+        },
+        "note": {
+          "id": "fldKYXL8xr",
+          "name": "备注"
+        }
+      },
+      "tags": {
+        "customer_id": {
+          "id": "fldNnw5N7h",
+          "name": "客户档案ID"
+        },
+        "tag": {
+          "id": "fldJJhw4jN",
+          "name": "标签"
+        },
+        "note": {
+          "id": "fldEJJN88F",
+          "name": "备注"
+        },
+        "created_at": {
+          "id": "fldqSxrMsw",
+          "name": "创建日期"
+        }
+      }
+    }
+  },
+  "hs_code": "4012.20",
+  "keywords": [
+    "used truck tire",
+    "second hand tire",
+    "tire retread",
+    "tractor tire",
+    "mining tire",
+    "used tire R22.5",
+    "truck tyre wholesale"
+  ],
+  "countries_priority": [
+    "NG",
+    "KE",
+    "ZA",
+    "EG",
+    "GH",
+    "TZ",
+    "UG",
+    "ET",
+    "SN",
+    "CI"
+  ],
+  "countries_mining": [
+    "NG",
+    "KE",
+    "ZA",
+    "EG"
+  ],
+  "customer_types": [
+    "A-进口贸易商",
+    "B-修车厂连锁",
+    "C-车队/矿企/物流",
+    "D-转出口商",
+    "E-再生胶厂"
+  ],
+  "customer_priority": {
+    "A-进口贸易商": 1,
+    "B-修车厂连锁": 2,
+    "C-车队/矿企/物流": 3,
+    "D-转出口商": 4,
+    "E-再生胶厂": 5
+  },
+  "rounds": {
+    "max_round": 3,
+    "intervals_days": {
+      "1": 0,
+      "2": 15,
+      "3": 30
+    },
+    "follow_status_labels": [
+      "等待跟进R2",
+      "等待跟进R3",
+      "跟进完结",
+      "已转化"
+    ]
+  },
+  "daily_limit": 100,
+  "send_window": {
+    "start_hour": 9,
+    "end_hour": 18,
+    "tz": "Asia/Shanghai"
+  },
+  "bounce_categories": [
+    "邮箱地址不存在",
+    "域名MX/解析失败",
+    "邮箱被禁用/冻结",
+    "反垃圾拦截",
+    "邮件过大/附件",
+    "临时失败(可重试)",
+    "其他"
+  ],
+  "ai_model": "gpt-5.6-terra (apikey.fun)",
+  "attachments": [
+    "/Users/jason/Library/Mobile Documents/com~apple~CloudDocs/Desktop/外贸单证测试/EDAR-Rubber-Catalog-EN.pdf"
+  ],
+  "email_templates": {
+    "1": {
+      "A-进口贸易商": {
+        "subject": "Used Truck Tires Wholesale — Direct from China Factory",
+        "body": "Dear Sir/Madam,\n\nWe are a leading Chinese supplier of used truck tires (HS 4012.20) with 15+ years export experience to West & East Africa.\n\nSpecifications available:\n- 11R22.5 / 315/80R22.5 (drive position)\n- 1000R20 / 1100R20 (mixed road)\n- Mining specs 13R22.5\n- TBR / LTR / OTR mix grades\n\nWe ship 40HQ containers weekly from Shanghai/Tianjin to Lagos/Apapa, Mombasa, Tema. Payment terms: TT 30% deposit, balance against copy of B/L. CIF Lagos USD price negotiable by spec.\n\nCatalog and recent SGS inspection report attached.\n\nCan we send you our latest price list for September?\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "B-修车厂连锁": {
+        "subject": "Used Tires Supply for Auto Repair Chain — Stable Stock + OEM Quality",
+        "body": "Dear Sir/Madam,\n\nWe understand your repair shop chain needs consistent tire supply. We are a Chinese factory specializing in quality inspected used truck and bus tires.\n\nFor chain buyers:\n- Mixed specs in 40HQ (your choice)\n- 3 quality grades (A/B/C) with clear depth markings\n- OEM labeling available (your brand)\n- Container-direct pricing, 15-20% below local market\n\nWe currently supply 12+ repair chains in Nigeria and Kenya.\n\nCatalog and quality inspection photos attached. Happy to arrange a video call to walk through our warehouse.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "C-车队/矿企/物流": {
+        "subject": "Fleet Tire Framework Agreement — 5000+ pcs/yr Discount",
+        "body": "Dear Sir/Madam,\n\nWe specialize in long-term tire supply for fleet operators, mining companies, and logistics firms.\n\nFor fleet buyers:\n- Annual framework agreement (12-month fixed price)\n- 15% volume discount on 5000+ pcs/yr\n- Dedicated account manager + monthly delivery schedule\n- On-site technical support available (Lagos/Nairobi)\n\nOur recent fleet clients include logistics companies in East Africa (4x4, 6x6 mining trucks) and West Africa (long-haul 40T trucks).\n\nCould we schedule a call to discuss your annual volume and spec mix?\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "D-转出口商": {
+        "subject": "FOB Shanghai Used Tires — Re-export Ready (ATA Carnet Support)",
+        "body": "Dear Sir/Madam,\n\nWe supply used truck tires FOB Shanghai for traders who re-export to landlocked African countries (Niger, Chad, Uganda, Rwanda, etc.).\n\nFor re-exporters:\n- FOB Shanghai / Tianjin / Qingdao (your choice)\n- ATA Carnet documentation support\n- Mixed container loading allowed\n- Net 30 credit terms after 3rd successful shipment\n\nWe can recommend freight forwarders experienced in Lagos/Mombasa trans-shipment.\n\nCatalog and CIF reference prices attached.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "E-再生胶厂": {
+        "subject": "TBR Casings for Retread / Crumb Rubber — Bulk Supply",
+        "body": "Dear Sir/Madam,\n\nWe supply used TBR (truck and bus radial) casings specifically graded for retread factories and crumb rubber processors.\n\nFor retread processors:\n- Casing depth 8-16mm (sorted by spec)\n- Patched / non-patched batches available\n- Bulk pricing for 20+ ton monthly\n- Container-direct to your retread facility\n\nWe currently export to retread plants in East Africa and South Asia.\n\nCatalog and spec sheets attached.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      }
+    },
+    "2": {
+      "A-进口贸易商": {
+        "subject": "Re: Used Truck Tires Wholesale",
+        "body": "Dear Sir/Madam,\n\nFollowing up on my email from last month regarding used truck tires from our Chinese factory.\n\nWe understand timing is critical. If you have specific spec requirements (R22.5 drive / 1000R20 mixed / 1100R20 heavy), I can prepare a tailored quote within 24 hours.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "B-修车厂连锁": {
+        "subject": "Re: Used Tires Supply for Auto Repair Chain — Stable Stock + OEM Quality",
+        "body": "Dear Sir/Madam,\n\nFollowing up on my email from last month.\n\nWe understand you may need stable tire supply for your chain. If you've been considering alternative suppliers, I can prepare a quick comparison and a 15-20% volume discount quote.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "C-车队/矿企/物流": {
+        "subject": "Re: Fleet Tire Framework Agreement — 5000+ pcs/yr Discount",
+        "body": "Dear Sir/Madam,\n\nFollowing up on my email from last month.\n\nFollowing up on the fleet framework agreement. If you're planning Q4 procurement, we can lock in 12-month pricing now. A short 15-min call would help us tailor the proposal.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "D-转出口商": {
+        "subject": "Re: FOB Shanghai Used Tires — Re-export Ready (ATA Carnet Support)",
+        "body": "Dear Sir/Madam,\n\nFollowing up on my email from last month.\n\nFollowing up on used truck tires FOB Shanghai for re-export. If you have upcoming orders for Niger / Chad / Uganda / Rwanda, we can hold stock and arrange ATA Carnet documentation.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "E-再生胶厂": {
+        "subject": "Re: TBR Casings for Retread / Crumb Rubber — Bulk Supply",
+        "body": "Dear Sir/Madam,\n\nFollowing up on my email from last month.\n\nFollowing up on TBR casings for retread / crumb rubber. If you have monthly volume requirements, we can offer tiered pricing and dedicated container schedules.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      }
+    },
+    "3": {
+      "A-进口贸易商": {
+        "subject": "Last follow-up: Used Truck Tires Wholesale",
+        "body": "Dear Sir/Madam,\n\nThis is my final follow-up on used truck tires. If timing was not right, please feel free to reach out whenever you are back in the market.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "B-修车厂连锁": {
+        "subject": "Last follow-up: Used Tires Supply for Auto Repair Chain — Stable Stock + OEM Quality",
+        "body": "Dear Sir/Madam,\n\nThis is my final follow-up. If timing wasn't right, please feel free to reach out whenever you're back in the market. Our catalog and pricing remain available.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "C-车队/矿企/物流": {
+        "subject": "Last follow-up: Fleet Tire Framework Agreement — 5000+ pcs/yr Discount",
+        "body": "Dear Sir/Madam,\n\nThis is my final follow-up. If timing wasn't right, please feel free to reach out whenever you're back in the market. Our catalog and pricing remain available.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "D-转出口商": {
+        "subject": "Last follow-up: FOB Shanghai Used Tires — Re-export Ready (ATA Carnet Support)",
+        "body": "Dear Sir/Madam,\n\nThis is my final follow-up. If timing wasn't right, please feel free to reach out whenever you're back in the market. Our catalog and pricing remain available.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      },
+      "E-再生胶厂": {
+        "subject": "Last follow-up: TBR Casings for Retread / Crumb Rubber — Bulk Supply",
+        "body": "Dear Sir/Madam,\n\nThis is my final follow-up. If timing wasn't right, please feel free to reach out whenever you're back in the market. Our catalog and pricing remain available.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
+      }
+    }
+  },
+  "imap_port": 993,
+  "_meta": {
+    "rounds_intervals_changed_at": "2026-09-22",
+    "rounds_intervals_note": "原 30/60 → 改 15/30 天 (Jason 9-22 指令)"
+  }
+}
