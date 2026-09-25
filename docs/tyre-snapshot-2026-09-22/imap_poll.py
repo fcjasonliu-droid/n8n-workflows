@@ -49,6 +49,7 @@ def load_config(product_code: str) -> dict:
 
 
 def list_records(lark_cli: str, base_token: str, table_id: str, limit=2000):
+    """[自动加, 9-22] 拉表全部记录."""
     out_path = "/tmp/_imap_pull.ndjson"
     if Path(out_path).exists():
         Path(out_path).unlink()
@@ -68,6 +69,7 @@ def list_records(lark_cli: str, base_token: str, table_id: str, limit=2000):
 
 
 def update_records(lark_cli: str, base_token: str, table_id: str, updates):
+    """[自动加, 9-22] 批量更新 (200/批)."""
     if not updates:
         return
     BATCH = 200
@@ -164,6 +166,7 @@ def fetch_imap(cfg: dict, since_hours: int = 24) -> list:
 
 
 def main():
+    """[自动加, 9-22] 入口: 拉 IMAP → 匹配邮箱 → 写开发信记录(回复) + 客户档案(保护=true)."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--product", required=True, help="如 esd / tire")
     ap.add_argument("--dry-run", action="store_true")

@@ -27,6 +27,7 @@ sys.path.insert(0, str(PIPELINE_ROOT / "scripts"))
 
 
 def main():
+    """[自动加, 9-22] 入口: 跑健康检查 (n8n workflow 用)."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--product", required=True)
     args = ap.parse_args()

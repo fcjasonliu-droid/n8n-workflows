@@ -25,10 +25,12 @@ PRODUCTS_DIR = PIPELINE_ROOT / "products"
 
 
 def load_config(product_code):
+    """[自动加, 9-22] 加载产品配置."""
     return json.loads((PRODUCTS_DIR / product_code / "config.json").read_text(encoding="utf-8"))
 
 
 def is_valid_email(email):
+    """[自动加, 9-22] 邮箱格式校验 (正则)."""
     if not email:
         return False
     return bool(re.match(r'^[\w.+-]+@[\w.-]+\.[a-z]{2,}$', email.strip(), re.IGNORECASE))
@@ -46,6 +48,7 @@ def safe_lark_run(args, timeout=300):
 
 
 def write_to_leads(cfg, leads):
+    """[自动加, 9-22] 批量写入线索池 (manual 流程的中间表, normalize 再转客户档案)."""
     LARK = cfg["crm"]["lark_cli"]
     BASE = cfg["crm"]["base_token"]
     TBL = cfg["crm"]["tables"]["leads"]
@@ -96,6 +99,7 @@ def write_to_leads(cfg, leads):
 
 
 def main():
+    """[自动加, 9-22] 入口: 读 CSV 或 --add 行 → 邮箱校验 → 写入线索池."""
     ap = argparse.ArgumentParser()
     ap.add_argument("--product", required=True)
     ap.add_argument("--csv", help="CSV 文件 (含 header)")

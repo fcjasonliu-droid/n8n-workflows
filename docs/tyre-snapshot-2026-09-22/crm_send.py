@@ -107,6 +107,7 @@ def template_for_round(base_tmpl: dict, round_num: int, product: str = "ESD") ->
 
 # === lark-cli helpers ===
 def lark_records(lark_cli: str, base_token: str, table_id: str, limit=2000):
+    """[自动加, 9-22] 拉表全部记录 (ndjson 输出)."""
     out_path = "/tmp/_send_pull.ndjson"
     if os.path.exists(out_path):
         os.remove(out_path)
@@ -127,6 +128,7 @@ def lark_records(lark_cli: str, base_token: str, table_id: str, limit=2000):
 
 
 def lark_batch_create(lark_cli: str, base_token: str, table_id: str, records):
+    """[自动加, 9-22] 批量创建记录 (200/批)."""
     if not records:
         return []
     new_ids = []
@@ -178,6 +180,7 @@ def _load_local_blacklist(product_code: str) -> set:
 
 
 def _add_to_blacklist(product_code: str, emails: list):
+    """[自动加, 9-22] 把刚发的邮箱写回 sent_blacklist.json (持久化)."""
     if not emails:
         return
     bl_path = PRODUCTS_DIR / product_code / "data" / "sent_blacklist.json"
@@ -250,6 +253,7 @@ def next_round(history: list, today: dt.date, max_round: int, intervals: dict) -
 
 
 def pick_candidates(customers, history, blacklist, limit, max_round, intervals, priority_map, force_round=None, today=None):
+    """[自动加, 9-22] 跳过保护客户+黑名单+已发 → 选候选客户. 优先级 A→E."""
     today = today or dt.date.today()
     candidates = []
     for c in customers:

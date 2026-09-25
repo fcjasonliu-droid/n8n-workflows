@@ -40,6 +40,7 @@ def load_config(product_code: str) -> dict:
 
 
 def list_records(lark_cli: str, base_token: str, table_id: str, limit=2000):
+    """[自动加, 9-22] 拉指定表所有记录 (ndjson)."""
     out_path = "/tmp/_norm_pull.ndjson"
     if Path(out_path).exists():
         Path(out_path).unlink()
@@ -60,6 +61,7 @@ def list_records(lark_cli: str, base_token: str, table_id: str, limit=2000):
 
 
 def write_batch(lark_cli: str, base_token: str, table_id: str, records):
+    """[自动加, 9-22] 批量写 (200/批), json.dumps 走 @file."""
     if not records:
         return []
     BATCH = 200
@@ -98,6 +100,7 @@ def write_batch(lark_cli: str, base_token: str, table_id: str, records):
 
 
 def update_records(lark_cli: str, base_token: str, table_id: str, updates):
+    """[自动加, 9-22] 批量更新 (200/批), update_records 是 dict of record_id."""
     if not updates:
         return
     BATCH = 200
@@ -118,6 +121,7 @@ def update_records(lark_cli: str, base_token: str, table_id: str, updates):
 
 
 def main():
+    """[自动加, 9-22] 入口: 从线索池拉待审核 → 去重 → 写入客户档案 → 回填线索池."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--product", required=True, help="如 esd / tire")
     parser.add_argument("--dry-run", action="store_true", help="只模拟, 不写入")
