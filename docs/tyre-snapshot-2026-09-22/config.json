@@ -172,7 +172,6 @@
   "keywords": [
     "used truck tire",
     "second hand tire",
-    "tire retread",
     "tractor tire",
     "mining tire",
     "used tire R22.5",
@@ -200,15 +199,13 @@
     "A-进口贸易商",
     "B-修车厂连锁",
     "C-车队/矿企/物流",
-    "D-转出口商",
-    "E-再生胶厂"
+    "D-转出口商"
   ],
   "customer_priority": {
     "A-进口贸易商": 1,
     "B-修车厂连锁": 2,
     "C-车队/矿企/物流": 3,
-    "D-转出口商": 4,
-    "E-再生胶厂": 5
+    "D-转出口商": 4
   },
   "rounds": {
     "max_round": 3,
@@ -260,10 +257,6 @@
       "D-转出口商": {
         "subject": "FOB Shanghai Used Tires — Re-export Ready (ATA Carnet Support)",
         "body": "Dear Sir/Madam,\n\nWe supply used truck tires FOB Shanghai for traders who re-export to landlocked African countries (Niger, Chad, Uganda, Rwanda, etc.).\n\nFor re-exporters:\n- FOB Shanghai / Tianjin / Qingdao (your choice)\n- ATA Carnet documentation support\n- Mixed container loading allowed\n- Net 30 credit terms after 3rd successful shipment\n\nWe can recommend freight forwarders experienced in Lagos/Mombasa trans-shipment.\n\nCatalog and CIF reference prices attached.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
-      },
-      "E-再生胶厂": {
-        "subject": "TBR Casings for Retread / Crumb Rubber — Bulk Supply",
-        "body": "Dear Sir/Madam,\n\nWe supply used TBR (truck and bus radial) casings specifically graded for retread factories and crumb rubber processors.\n\nFor retread processors:\n- Casing depth 8-16mm (sorted by spec)\n- Patched / non-patched batches available\n- Bulk pricing for 20+ ton monthly\n- Container-direct to your retread facility\n\nWe currently export to retread plants in East Africa and South Asia.\n\nCatalog and spec sheets attached.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
       }
     },
     "2": {
@@ -282,10 +275,6 @@
       "D-转出口商": {
         "subject": "Re: FOB Shanghai Used Tires — Re-export Ready (ATA Carnet Support)",
         "body": "Dear Sir/Madam,\n\nFollowing up on my email from last month.\n\nFollowing up on used truck tires FOB Shanghai for re-export. If you have upcoming orders for Niger / Chad / Uganda / Rwanda, we can hold stock and arrange ATA Carnet documentation.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
-      },
-      "E-再生胶厂": {
-        "subject": "Re: TBR Casings for Retread / Crumb Rubber — Bulk Supply",
-        "body": "Dear Sir/Madam,\n\nFollowing up on my email from last month.\n\nFollowing up on TBR casings for retread / crumb rubber. If you have monthly volume requirements, we can offer tiered pricing and dedicated container schedules.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
       }
     },
     "3": {
@@ -303,10 +292,6 @@
       },
       "D-转出口商": {
         "subject": "Last follow-up: FOB Shanghai Used Tires — Re-export Ready (ATA Carnet Support)",
-        "body": "Dear Sir/Madam,\n\nThis is my final follow-up. If timing wasn't right, please feel free to reach out whenever you're back in the market. Our catalog and pricing remain available.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
-      },
-      "E-再生胶厂": {
-        "subject": "Last follow-up: TBR Casings for Retread / Crumb Rubber — Bulk Supply",
         "body": "Dear Sir/Madam,\n\nThis is my final follow-up. If timing wasn't right, please feel free to reach out whenever you're back in the market. Our catalog and pricing remain available.\n\nBest regards,\nSales Team\nFANSHIHAO International Trading (Shanghai) Co., Ltd."
       }
     }
